@@ -1,0 +1,126 @@
+
+ds create mask from file
+
+			
+			//NSArray * extroisseries = [[[NSArray alloc] initWithObjects:@"rois_series", nil] autorelease];
+			//NSArray * extroisseries = [[[NSArray alloc] initWithObjects:@"roi", nil] autorelease];
+			
+			//NSArray * roisseriesList = [fileList pathsMatchingExtensions: extroisseries];
+			
+			// error pour trouver dcm file ..... ne fait rien si il n y a pas de dcm file
+			// find the dcm file
+			//NSArray * extDCM = [[[NSArray alloc] initWithObjects:@"dcm", nil] autorelease];
+			//NSArray * dcmList = [fileList pathsMatchingExtensions: extDCM];
+
+			
+			////////////////////
+		//	NSArray * extDir = [[[NSArray alloc] initWithObjects:@"", nil] autorelease];
+		//	NSArray * dcmDirect = [fileList pathsMatchingExtensions: extDir];
+		//	NSLog( @"nb sous dossier %d", [dcmDirect count]);
+			
+
+
+
+
+
+
+
+					/*
+					
+					// write the header
+					NSString *tmpheader = [NSString stringWithFormat: @"%@.hdr", [dir lastPathComponent]];
+					NSString * header = [dir stringByAppendingPathComponent: tmpheader];
+					const char * headerFile =  [header cStringUsingEncoding:[NSString 
+																			 defaultCStringEncoding]];
+
+					int res = writeAnalyzeHeader(headerFile, dim, pixdim);
+					
+					if (res == 1)
+					{
+						NSAlert * err = [NSAlert alertWithMessageText:@"Error"
+														defaultButton:@"ok"
+													  alternateButton:nil
+														  otherButton:nil
+											informativeTextWithFormat:@"Unable to create the header file"];
+						[err runModal];
+						NSLog(@"Error: unable to create the header file");
+						return 1;
+					}
+					
+					// write the data
+					NSString *tmpimg = [NSString stringWithFormat: @"%@.img", [dir lastPathComponent]];
+					NSString *img = [dir stringByAppendingPathComponent:tmpimg];
+					const char * imgFile =  [img cStringUsingEncoding:[NSString 
+																	   defaultCStringEncoding]];
+					//open (or create) the file
+					FILE * fp = fopen(imgFile, "w");
+					if (fp == NULL)
+					{
+						NSAlert * err = [NSAlert alertWithMessageText:@"Error"
+														defaultButton:@"ok"
+													  alternateButton:nil
+														  otherButton:nil
+											informativeTextWithFormat:@"Unable to create the image file"];
+						[err runModal];
+						NSLog(@"Error: unable to create the img file");
+						return 1;
+					}
+					else
+					{	
+						NSLog(@"Writing .img");
+						
+						//write the data
+						for (slice = 0; slice < z; slice++)
+						{
+							DCMPix  *pix = [dcmPixList objectAtIndex:slice];
+							for (tmp = 0; tmp < x*y; tmp++)
+							{
+								unsigned char v = (unsigned char)[pix fImage][tmp];
+								fwrite(&v, sizeof(unsigned char), 1, fp);
+							}
+							
+						}
+						fclose(fp);
+		
+						
+					}*/
+					////////// end write analyze
+					
+					
+					
+					//////////
+					// write 3D raw file
+					/*NSLog(@"Writing .raw");
+					
+					NSMutableData * data = [[NSMutableData alloc] init];		
+					for( slice = 0; slice < z; slice++)
+					{
+						DCMPix  *pix = [dcmPixList objectAtIndex:slice];
+						
+						vImage_Buffer dst16, srcf;
+						
+						dst16.height = srcf.height = [pix pheight];
+						dst16.width = srcf.width = [pix pwidth];
+						dst16.rowBytes = [pix pwidth]*2;
+						srcf.rowBytes = [pix pwidth]*sizeof(float);
+						
+						dst16.data = malloc([pix pwidth]*[pix pheight]*2L);
+						srcf.data = [pix fImage];
+						
+						vImageConvert_FTo16S( &srcf, &dst16, 0, 1.0, 0);
+						
+						//NSData *data = [NSData dataWithBytesNoCopy:dst16.data length:[pix pwidth]*[pix pheight]*2 freeWhenDone:NO];
+						[data appendBytes:dst16.data length:[pix pwidth]*[pix pheight]*2];
+						free(dst16.data);
+					}
+					
+					[data writeToFile:[NSString stringWithFormat:@"%@/roimasque.raw", dir] atomically:NO];
+					[data release];*/
+					/////////
+					
+				    /*NSAlert * myAlert = [NSAlert alertWithMessageText:@"End of the conversion"
+														defaultButton:@"OK"
+													  alternateButton:nil
+														  otherButton:nil
+											informativeTextWithFormat:@"In the directory %@, %d files have been converted to create the mask %@ and .img" , dir, nbFiles, header];
+					[myAlert runModal];*/
